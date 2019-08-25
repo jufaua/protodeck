@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message Root {
+  message Trip {
+    repeated uint32 color = 1 [packed = true];
+    optional uint32 width = 2;
+    repeated sint64 coords = 3 [packed = true];
+    repeated uint32 times = 4 [packed = true];
+  }
+  repeated Trip trips = 1;
+}
+
