@@ -1,5 +1,5 @@
 {
-  "name": "ProtoDeck",
+  "name": "proto-deck",
   "version": "0.0.1",
   "description": "A protobuf implementation for the some of deck.gl layers data formats",
   "main": "index.js",
