@@ -9,8 +9,10 @@ function encode(obj, pbf = new Pbf()) {
 }
 
 function writeTrip(obj,pbf) {
-  pbf.writePackedVarint(1, obj.color);
-  pbf.writeVarintField(2,obj.width);
+  obj.color       && pbf.writePackedVarint(1, obj.color);
+  obj.width       && pbf.writeVarintField(2,obj.width);
+  obj.id          && pbf.writeVarintField(3,obj.id);
+  obj.category_id && pbf.writeVarintField(4,obj.category_id);
   var coords = obj.segments;
   writeCoords(coords,pbf);
 }
@@ -33,8 +35,8 @@ function writeCoords(coords,pbf) {
     times.push(n);
     tsum += n;
   }
-  pbf.writePackedSVarint(3,flatCoords);
-  pbf.writePackedVarint(4,times);
+  pbf.writePackedSVarint(5,flatCoords);
+  pbf.writePackedVarint(6,times);
 }
 
 //Decoding functions
@@ -47,8 +49,10 @@ function decode(pbfInput) {
   for (var i = 0; i < obj.length; i++) {
     let oobj = {
       "color": obj[i].color, 
-      "width": obj[i].width, 
-      "segments": []
+      "segments": [],
+      ...(obj[i].width       && {"width": obj[i].width}),
+      ...(obj[i].id          && {"id": obj[i].id}),
+      ...(obj[i].category_id && {"category_id": obj[i].category_id})
     }
     let prev = [0,0,0];
     if (obj[i].times && obj[i].times.length) {
@@ -73,8 +77,10 @@ function readTrips(pbf,obj) {
 function readTrip(tag,t,pbf) {
   if (tag === 1) t.color = pbf.readPackedVarint();
   else if (tag === 2) t.width = pbf.readVarint();
-  else if (tag === 3) t.coords = pbf.readPackedSVarint();
-  else if (tag === 4) t.times = pbf.readPackedVarint();
+  else if (tag === 3) t.id = pbf.readVarint();
+  else if (tag === 4) t.category_id = pbf.readVarint();
+  else if (tag === 5) t.coords = pbf.readPackedSVarint();
+  else if (tag === 6) t.times = pbf.readPackedVarint();
   return t
 
 }

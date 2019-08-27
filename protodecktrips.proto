@@ -4,8 +4,10 @@ message Root {
   message Trip {
     repeated uint32 color = 1 [packed = true];
     optional uint32 width = 2;
-    repeated sint64 coords = 3 [packed = true];
-    repeated uint32 times = 4 [packed = true];
+    optional uint32 id = 3;
+    optional uint32 category_id = 4;
+    repeated sint64 coords = 5 [packed = true];
+    repeated uint32 times = 6 [packed = true];
   }
   repeated Trip trips = 1;
 }
