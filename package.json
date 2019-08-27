@@ -1,20 +1,23 @@
 {
-  "name": "protodecktrips",
+  "name": "ProtoDeck",
   "version": "0.0.1",
-  "description": "A protobuf implementation for the deck.gl trips format/layers",
+  "description": "A protobuf implementation for the some of deck.gl layers data formats",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js"
   },
   "keywords": [
     "deck",
     "protobuf",
     "trips"
   ],
-  "repository": "git@github.com:jufaua/protodecktrips.git",
+  "repository": "git@github.com:jufaua/protodeck.git",
   "author": "Julien Faucher <julien.faucher@gmail.com>",
-  "license": "LGPLv3",
+  "license": "LGPL-3.0-or-later",
   "dependencies": {
     "pbf": "^3.2.0"
+  },
+  "devDependencies": {
+    "tap": "^14.6.1"
   }
 }
