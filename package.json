@@ -2,7 +2,7 @@
   "name": "proto-deck",
   "version": "0.0.3",
   "description": "A protobuf implementation for the some of deck.gl layers data formats",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel index.js -d dist",
     "prepublishOnly": "npm run build",
@@ -24,5 +24,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "tap": "^14.6.1"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
