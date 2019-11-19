@@ -1,6 +1,6 @@
 {
   "name": "proto-deck",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A protobuf implementation for the some of deck.gl layers data formats",
   "main": "dist/index.js",
   "scripts": {
